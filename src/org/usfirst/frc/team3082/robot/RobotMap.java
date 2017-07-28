@@ -21,9 +21,10 @@ public class RobotMap {
 	public static int frontLeftSpeedID = 7;
 	public static int frontLeftAngleID = 8;
 	
-	// Steering tuning constants 
+	// Drivetrain tuning constants 
 	public static double steeringCountsPerRev = 1661; // approximation. True value is 7 * 71.165 / 1.2 * 4 = 1660.516
-	public static double steeringP = 1;
-	public static double steeringI = 0.0;
-	public static double steeringD = 0.0;
+	public static double steeringP = 5.0;
+	public static double steeringI = 0.01;
+	public static double steeringD = 0.001;
+	public static double speedRampRate = 36; // Volts per second
 }

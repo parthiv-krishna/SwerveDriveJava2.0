@@ -21,11 +21,16 @@ public class DriveTrain {
 	public void crabRobotOriented(double vX, double vY) {
 		double speed = Math.hypot(vY, vX);
 		double angle = Math.atan2(vY, vX);
-		System.out.println(speed);
+		if (speed > 1) {
+			speed = 1;
+		}
+		System.out.print("speed: ");
+		System.out.print(speed);
+		System.out.print("angle: ");
+		System.out.println(angle);
 		backRightSW.write(speed, angle);
 		backLeftSW.write(speed, angle);
 		frontRightSW.write(speed, angle);
 		frontLeftSW.write(speed, angle);
 	}
-	
 }
