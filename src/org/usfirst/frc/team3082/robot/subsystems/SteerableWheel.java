@@ -14,8 +14,8 @@ public class SteerableWheel {
 	private CANTalon speedMotor;
 	private CANTalon steerMotor;
 	
-	private int outputSpeed;
-	private int outputEncPos;
+	private double outputSpeed = 0;
+	private double outputEncPos = 0;
 	
 	// Instantiation   
 	public SteerableWheel(int speedMotorID, int steerMotorID, boolean isInverted) {
@@ -28,17 +28,30 @@ public class SteerableWheel {
 		this.steerMotor = new CANTalon(steerMotorID);
 		steerMotor.changeControlMode(TalonControlMode.Position); // setup position control
 		steerMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder); 
+		steerMotor.reverseSensor(true);
 		steerMotor.setPID(RobotMap.steeringP, RobotMap.steeringI, RobotMap.steeringD);
 		steerMotor.enableControl();
 	}
 	
-	private void write(double speed, double angle) {
-		
+	public void write(double speed, double angle) {
+		outputSpeed = speed;
+		if (speed > 0.05) { // doesn't zero each time throttle is released
+			//double outputEncPos = findNearestSetpoint(steerMotor.getEncPosition(), angle);
+			outputEncPos = getBasicSetpoint(angle);
+		}
+		setMotors();
 	}
-
-	private double findNearestSetpoint(double currentAngle, double newAngle){
+	
+	private double getBasicSetpoint(double newAngle) {
+		double setpoint = newAngle/Math.PI * (RobotMap.steeringCountsPerRev/2);
+		return setpoint;
+	}
+	
+	private double findNearestSetpoint(double currentEncPos, double newAngle) {
 		double setpoint = 0;
+		return setpoint;
 	}
+	
 	
 	private void setMotors() {
 		speedMotor.set(outputSpeed);

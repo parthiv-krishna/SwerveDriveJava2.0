@@ -19,7 +19,13 @@ public class DriveTrain {
 	}
 	
 	public void crabRobotOriented(double vX, double vY) {
-		
+		double speed = Math.hypot(vY, vX);
+		double angle = Math.atan2(vY, vX);
+		System.out.println(speed);
+		backRightSW.write(speed, angle);
+		backLeftSW.write(speed, angle);
+		frontRightSW.write(speed, angle);
+		frontLeftSW.write(speed, angle);
 	}
 	
 }
