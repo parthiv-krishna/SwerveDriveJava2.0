@@ -23,8 +23,9 @@ public class RobotMap {
 	
 	// Drivetrain tuning constants 
 	public static double steeringCountsPerRev = 1661; // approximation. True value is 7 * 71.165 / 1.2 * 4 = 1660.516
-	public static double steeringP = 5.0;
+	public static double steeringP = 10.0;
 	public static double steeringI = 0.01;
 	public static double steeringD = 0.001;
-	public static double speedRampRate = 36; // Volts per second
+	public static double speedRampRate = 20; // Volts per second
+	public static int speedCurrentLimit = 45; // Amps
 }

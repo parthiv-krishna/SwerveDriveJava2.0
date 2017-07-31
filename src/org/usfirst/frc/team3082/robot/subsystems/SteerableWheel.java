@@ -24,6 +24,7 @@ public class SteerableWheel {
 		speedMotor.changeControlMode(TalonControlMode.PercentVbus);
 		speedMotor.setInverted(isInverted);
 		speedMotor.setVoltageRampRate(RobotMap.speedRampRate);
+		speedMotor.setCurrentLimit(RobotMap.speedCurrentLimit);
 		
 		// Initialize angle Talon SRX with the given ID 
 		this.steerMotor = new CANTalon(steerMotorID);

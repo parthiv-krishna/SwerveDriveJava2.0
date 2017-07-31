@@ -70,7 +70,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		driveTrain.crabRobotOriented(oi.driver.getRawAxis(0), -1*oi.driver.getRawAxis(1)); // y on most joysticks is inverted
+		//driveTrain.crabRobotOriented(oi.driver.getRawAxis(0), -1*oi.driver.getRawAxis(1)); // y on most joysticks is inverted
+		driveTrain.swerveRobotOriented(oi.driver.getRawAxis(0), -1*oi.driver.getRawAxis(1), oi.driver.getRawAxis(4));
 		Timer.delay(0.005);
 	}  
 
